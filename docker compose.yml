@@ -1,0 +1,14 @@
+services:
+  aivisspeech-engine:
+    image: ghcr.io/aivis-project/aivisspeech-engine:cpu-latest
+    container_name: aivisspeech-engine
+
+    ports:
+      - "10101:10101"
+
+    # AivisSpeech Engine のモデル・設定データを保存する場所
+    volumes:
+      - ./models:/home/user/.local/share/AivisSpeech-Engine-Dev
+
+    # PC再起動後も自動起動
+    restart: unless-stopped
